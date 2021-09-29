@@ -2,7 +2,7 @@ const loginForm = document.querySelector('form')
 
 const url = ( window.location.hostname.includes('localhost') )
         ? 'http://localhost:8080/api/auth/'
-        : 'https://restserver-curso-fher.herokuapp.com/api/auth/';
+        : 'https://socket-chat-cdfo.herokuapp.com/api/auth/';
 
 loginForm.addEventListener('submit', e => {
     e.preventDefault();
