@@ -150,14 +150,12 @@ btnSalir.addEventListener('click', ()=> {
 
 const main = async()=>{
 
-    (()=>{
-        gapi.load('auth2', () => {
-            gapi.auth2.init();
-            main();
-        });
-    })();
-    
     await validarJWT()
 }
 
-main();
+(()=>{
+    gapi.load('auth2', () => {
+        gapi.auth2.init();
+        main();
+    });
+})();
