@@ -19,7 +19,6 @@ const socketController = async(socket = new Socket(), io)=>{
     chatMensajes.conectarUsuario(usuario);
     io.emit('usuarios-activos',chatMensajes.usuariosArr);
     socket.emit('recibir-mensaje',chatMensajes.ultimos10)
-    socket.emit('mensaje-privado',chatMensajes.ultimos10Privados)
 
     socket.join(usuario.id);
 
