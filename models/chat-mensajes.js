@@ -42,8 +42,8 @@ class ChatMensajes {
         return privMsgs;
 
     }
-    enviarMensajePrivado(uid,nombre,mensaje,para){
-        this.privados.unshift(new Mensaje(uid,nombre,mensaje,para))
+    enviarMensajePrivado(uid,nombre,mensaje,para,idrecp){
+        this.privados.unshift(new Mensaje(uid,nombre,mensaje,para,idrecp))
     }
 
     conectarUsuario(usuario){
