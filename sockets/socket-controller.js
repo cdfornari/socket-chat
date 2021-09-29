@@ -33,9 +33,9 @@ const socketController = async(socket = new Socket(), io)=>{
 
             const para = await Usuario.findById(uid);
 
-            chatMensajes.enviarMensajePrivado(usuario.id,usuario.nombre,mensaje,para.nombre)
-            socket.emit('mensaje-privado',chatMensajes.ultimos10Privados)
-            socket.to(uid).emit('mensaje-privado',chatMensajes.ultimos10Privados)
+            chatMensajes.enviarMensajePrivado(usuario.id,usuario.nombre,mensaje,para.nombre,para.id)
+            socket.emit('mensaje-privado',chatMensajes.priv(usuario.id))
+            socket.to(uid).emit('mensaje-privado',chatMensajes.priv(usuario.id))
         }else{
             chatMensajes.enviarMensaje(usuario.id,usuario.nombre,mensaje)
             io.emit('recibir-mensaje',chatMensajes.ultimos10)
