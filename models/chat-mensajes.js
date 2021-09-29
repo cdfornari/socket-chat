@@ -39,7 +39,7 @@ class ChatMensajes {
                 return mensaje;
             }
         })
-        return privMsgs
+        return privMsgs;
 
     }
     enviarMensajePrivado(uid,nombre,mensaje,para){
