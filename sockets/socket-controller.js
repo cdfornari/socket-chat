@@ -1,7 +1,7 @@
 const { Socket } = require("socket.io");
 
 const { comprobarJWT } = require("../helpers");
-const { ChatMensajes, Usuario } = require("../models");
+const { ChatMensajes, Usuario, Mensaje } = require("../models");
 
 const chatMensajes = new ChatMensajes();
 
@@ -33,9 +33,8 @@ const socketController = async(socket = new Socket(), io)=>{
 
             const para = await Usuario.findById(uid);
 
-            chatMensajes.enviarMensajePrivado(usuario.id,usuario.nombre,mensaje,para.nombre,uid)
-            socket.emit('mensaje-privado',chatMensajes.priv(usuario.id))
-            socket.to(uid).emit('mensaje-privado',chatMensajes.priv(usuario.id))
+            socket.emit('mensaje-privado',new Mensaje(usuario.id,usuario.nombre,mensaje,para.nombre,uid))
+            socket.to(uid).emit('mensaje-privado',new Mensaje(usuario.id,usuario.nombre,mensaje,para.nombre,uid))
         }else{
             chatMensajes.enviarMensaje(usuario.id,usuario.nombre,mensaje)
             io.emit('recibir-mensaje',chatMensajes.ultimos10)

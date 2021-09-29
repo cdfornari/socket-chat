@@ -105,24 +105,19 @@ const dibujarMensajes = (mensajes = [])=>{
     ulMensajes.innerHTML = mensajesHtml;
 }
 
-const dibujarMensajesPrivados = (mensajes = [])=>{
+const dibujarMensajesPrivados = ({mensaje,nombre,para})=>{
 
-    let privadosHtml = '';
-    mensajes.forEach(({mensaje,nombre,para}) => {
-        
-        privadosHtml += `
-            <li>
-                <p>
-                    <span class="text-primary">${nombre}:</span>
-                    <span>${mensaje}</span>
-                    <br>
-                    <span class="text-secondary">para: ${para}</span>
-                </p>
-            </li>
-        `;
-    })
+    ulPrivados.innerHTML += `
+        <li>
+            <p>
+                <span class="text-primary">${nombre}:</span>
+                <span>${mensaje}</span>
+                <br>
+                <span class="text-secondary">para: ${para}</span>
+            </p>
+        </li>
+    `;
 
-    ulPrivados.innerHTML = privadosHtml;
 }
 
 txtMensaje.addEventListener('keyup', ({keyCode}) =>{
